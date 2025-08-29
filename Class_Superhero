@@ -1,0 +1,29 @@
+# Base class: Character
+class Character:
+    def __init__(self, name, health, power):
+        self.name = name
+        self._health = health  # protected
+        self.power = power
+
+    def attack(self):
+        print(f"{self.name} attacks with {self.power}!")
+
+    def get_health(self):
+        return self._health
+
+# Derived class: Superhero inherits from Character
+class Superhero(Character):
+    def __init__(self, name, health, power, superpower):
+        super().__init__(name, health, power)  # call parent constructor
+        self.__superpower = superpower  # private attribute
+
+    def use_superpower(self):
+        print(f"{self.name} uses superpower: {self.__superpower}!")
+
+# Creating superhero objects
+hero1 = Superhero("IronPy", 100, "Punch", "Code Blast")
+hero2 = Superhero("DebugGal", 90, "Kick", "Bug Zapper")
+
+hero1.attack()
+hero1.use_superpower()
+print(hero2.get_health())
